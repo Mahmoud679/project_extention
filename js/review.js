@@ -222,7 +222,7 @@
   practiceSelectedBtn.addEventListener('click', () => {
     const openItems = currentView.filter(m => !m.mastered);
     if (!openItems.length) {
-      showToast('אין טעויות פתוחות בתצוגה הנוכחית');
+      showToast('אין טעויות בתצוגה הנוכחית');
       return;
     }
     localStorage.setItem(STORAGE_REVIEW_QUEUE, JSON.stringify(buildPracticeQueue(openItems)));
