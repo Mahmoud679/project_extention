@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EXAMIX | מסך 2 - העלאה והגדרות</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">דלג לתוכן</a>
+
+  <header class="site-header">
+    <nav class="navbar navbar-expand-lg container nav-wrap" aria-label="תפריט ראשי">
+      <a class="brand" href="index.html" aria-label="EXAMIX Home">
+        <span class="brand-mark" aria-hidden="true">EX</span>
+        <span class="brand-name">EXAMIX</span>
+        <span class="brand-tag">מסך 2 • העלאה והגדרות</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+        aria-controls="mainNav" aria-expanded="false" aria-label="פתח תפריט">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto nav-list">
+          <li class="nav-item"><a class="nav-link" href="index.html" data-nav="index">דף הבית</a></li>
+          <li class="nav-item"><a class="nav-link" href="upload.html" data-nav="upload">מסך 2 • העלאה</a></li>
+          <li class="nav-item"><a class="nav-link" href="screen3.html" data-nav="screen3">מסך 3 • תצוגה</a></li>
+          <li class="nav-item"><a class="nav-link" href="screen4.html" data-nav="screen4">מסך 4 • היסטוריה</a></li>
+          <li class="nav-item"><a class="nav-link" href="screen5.html" data-nav="screen5">מסך 5 • התחברות</a></li>
+                  <li class="nav-item"><a class="nav-link" href="review.html" data-nav="review">טעויות לתרגול</a></li>
+        </ul>
+
+        <div class="nav-actions" id="navAuthArea">
+          <a class="btn btn-ghost" href="screen5.html">התחברות</a>
+          <a class="btn btn-primary btn-cta" href="upload.html">התחל לערבל</a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="hero" style="padding-bottom: 1.2rem;">
+      <div class="container">
+        <h1 style="margin:0;">העלאה והגדרות 🧾</h1>
+        <p class="muted" style="margin:8px 0 0;">מעלים PDF (דמו) → בוחרים ערבול וגרסאות → ממשיכים למסך 3.</p>
+        <p class="muted small" id="fromHomeText" style="margin:6px 0 0;"></p>
+        <div id="formToast" class="toast-msg" role="status" aria-live="polite" hidden></div>
+      </div>
+    </section>
+  </header>
+
+  <main id="main">
+    <section class="section" style="padding-top: 1.6rem;">
+      <div class="container upload-grid">
+
+        <section class="upload-card" aria-label="טופס העלאה">
+          <div class="upload-head">
+            <h3 style="margin:0;">טופס 0 - העלאת PDF</h3>
+            <p class="muted small" style="margin:6px 0 0;">ולידציות + שמירה ל-localStorage + הוספה להיסטוריה</p>
+          </div>
+
+          <form id="examForm" novalidate>
+            <div class="dropzone" tabindex="0" aria-label="בחירת קובץ PDF">
+              <div class="drop-icon">📎</div>
+              <p class="drop-title">בחר/י קובץ PDF</p>
+              <p class="muted small" style="margin:0;">מקסימום 5MB • PDF בלבד</p>
+
+              <div class="drop-actions">
+                <label class="btn btn-primary" for="pdfFile">בחר קובץ</label>
+                <input id="pdfFile" class="sr-only" type="file" accept="application/pdf" />
+                <button id="clearFile" class="btn btn-ghost" type="button">נקה</button>
+              </div>
+
+              <p class="muted small" id="fileName" style="margin:10px 0 0;"></p>
+              <p class="error-text" id="fileError" hidden></p>
+            </div>
+
+            <div style="margin-top: 14px;">
+              <label class="form-label" for="subject"><strong>מקצוע</strong></label>
+              <input id="subject" class="form-control" type="text" placeholder="לדוגמה: היסטוריה" />
+              <p class="error-text" id="subjectError" hidden></p>
+            </div>
+
+            <div style="margin-top: 12px;">
+              <label class="form-label" for="grade"><strong>כיתה</strong></label>
+              <select id="grade" class="form-select">
+                <option value="">בחר/י כיתה</option>
+                <option value="ז'">ז'</option>
+                <option value="ח'">ח'</option>
+                <option value="ט'">ט'</option>
+                <option value="י'">י'</option>
+                <option value="יא'">יא'</option>
+                <option value="יב'">יב'</option>
+              </select>
+              <p class="error-text" id="gradeError" hidden></p>
+            </div>
+
+            <div style="margin-top: 12px;">
+              <label class="form-label" for="versions"><strong>מספר גרסאות</strong></label>
+              <input id="versions" class="form-control" type="number" min="2" max="6" value="4" />
+              <p class="error-text" id="versionsError" hidden></p>
+            </div>
+
+            <div class="hint-row">
+              <div class="hint-badge">💡</div>
+              <div>
+                <strong>סוג ערבול</strong>
+                <p class="muted small" style="margin:4px 0 0;">בחר/י מה לערבל — שאלות / תשובות / שניהם.</p>
+              </div>
+            </div>
+
+            <div style="margin-top: 8px;" aria-label="בחירת סוג ערבול">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="shuffleType" id="shQ" value="questions">
+                <label class="form-check-label" for="shQ">ערבול שאלות</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="shuffleType" id="shA" value="answers">
+                <label class="form-check-label" for="shA">ערבול תשובות</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="shuffleType" id="shB" value="both" checked>
+                <label class="form-check-label" for="shB">שאלות + תשובות</label>
+              </div>
+              <p class="error-text" id="shuffleError" hidden></p>
+            </div>
+
+            <div class="mini-actions">
+              <a class="btn btn-ghost" href="index.html">חזרה</a>
+              <button class="btn btn-primary" type="submit">המשך למסך 3</button>
+            </div>
+          </form>
+        </section>
+
+        <aside class="upload-side">
+          <section class="side-box">
+            <h3>מה יקרה עכשיו?</h3>
+            <ol class="mini-steps">
+              <li>נבדוק PDF + שדות חובה</li>
+              <li>נשמור הגדרות ל-localStorage</li>
+              <li>נוסיף רשומה למסך היסטוריה</li>
+              <li>נעבור למסך 3 לתצוגה אחרי ערבול</li>
+            </ol>
+            <a class="btn btn-ghost w-100 not-implemented" href="#">צפה בדוגמת PDF</a>
+          </section>
+
+          <section class="side-box">
+            <h3>טיפים</h3>
+            <p class="muted">כדי לקבל נקודות: ולידציות, jQuery events, localStorage, שינוי DOM.</p>
+          </section>
+        </aside>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <span class="muted">© 2025 EXAMIX</span>
+        <span class="muted">Screen 2 • Upload</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/upload.js"></script>
+</body>
+</html>
